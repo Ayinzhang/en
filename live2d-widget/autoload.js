@@ -34,10 +34,9 @@ if (screen.width >= 768) {
 		// 配置选项的具体用法见 README.md
 		initWidget({
 			waifuPath: live2d_path + "waifu-tips.json",
-			// cdnPath: "/live2d_api/",
-			cdnPath: "https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/live2d_api/",
+			cdnPath: "/live2d_api/",
+			// cdnPath: "https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/live2d_api/",
 			// tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
-			tools: []
 		});
 	});
 }
