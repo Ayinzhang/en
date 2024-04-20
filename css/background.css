@@ -1,20 +1,20 @@
 /*�Զ�������*/
 @font-face {
-    font-family: 'font';
-    src: url('https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/fonts/customfont.ttf');
+    font-family: 'myfont';
+    src: url('https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/fonts/myfont.ttf');
     font-display: swap
 }
 
 h1#site-title {
-    font-family: font !important
+    font-family: myfont !important
 }
 
 span#subtitle {
-    font-family: font !important
+    font-family: myfont !important
 }
 
 a#site-name {
-    font-family: font !important
+    font-family: myfont !important
 }
 
 /*����ͼ*/
