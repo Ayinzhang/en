@@ -1,3 +1,10 @@
+/*����ͼ*/
+#content-inner {
+    background: url(https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/img/background.jepg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /*����ҳ��ʵ��ë������Ч*/
 #aside-content {
     background: rgba(255,255,255,0);
