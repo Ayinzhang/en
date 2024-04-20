@@ -1,0 +1,43 @@
+/*�Զ�������*/
+@font-face {
+    font-family: 'myfont';
+    src: url('https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/fonts/myfont.ttf');
+    font-display: swap
+}
+
+h1#site-title {
+    font-family: myfont !important
+}
+
+span#subtitle {
+    font-family: myfont !important
+}
+
+a#site-name {
+    font-family: myfont !important
+}
+
+/*����ҳ��ë������Ч*/
+#aside-content {
+    background: rgba(255,255,255,0);
+}
+
+    #aside-content > .card-widget:first-child {
+        background: rgba(255,255,255,0.5);
+        backdrop-filter: blur(10px);
+    }
+
+    #aside-content .card-widget {
+        background: rgba(255,255,255,0.5);
+        backdrop-filter: blur(10px);
+    }
+
+.layout > div:first-child:not(.recent-posts) {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+}
+
+#recent-posts > .recent-post-item {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+}
