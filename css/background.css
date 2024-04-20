@@ -1,3 +1,22 @@
+/*�Զ�������*/
+@font-face {
+    font-family: 'font';
+    src: url('https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/fonts/customfont.ttf');
+    font-display: swap
+}
+
+h1#site-title {
+    font-family: font !important
+}
+
+span#subtitle {
+    font-family: font !important
+}
+
+a#site-name {
+    font-family: font !important
+}
+
 /*����ͼ*/
 #content-inner {
     background: url(https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/img/background.jepg);
@@ -5,7 +24,7 @@
     background-size: cover;
 }
 
-/*����ҳ��ʵ��ë������Ч*/
+/*����ҳ��ë������Ч*/
 #aside-content {
     background: rgba(255,255,255,0);
 }
