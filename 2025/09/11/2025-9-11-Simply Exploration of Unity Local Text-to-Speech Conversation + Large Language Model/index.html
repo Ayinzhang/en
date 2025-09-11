@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Unity 本地文字语音互转+大语言模型对话初探 | Ayin</title><meta name="author" content="翼轸"><meta name="copyright" content="翼轸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="再见了，我的摸鱼工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity 本地文字语音互转+大语言模型对话初探">
+<meta property="og:url" content="https://ayinzhang.github.io/2025/09/11/2025-9-11-Simply%20Exploration%20of%20Unity%20Local%20Text-to-Speech%20Conversation%20+%20Large%20Language%20Model/index.html">
+<meta property="og:site_name" content="Ayin">
+<meta property="og:description" content="再见了，我的摸鱼工作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pica.zhimg.com/v2-62008dfdb6d912ea5487b4b6a0b71248_1440w.png?source=ccfced1a">
+<meta property="article:published_time" content="2025-09-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-11T09:57:48.745Z">
+<meta property="article:author" content="翼轸">
+<meta property="article:tag" content="引擎工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pica.zhimg.com/v2-62008dfdb6d912ea5487b4b6a0b71248_1440w.png?source=ccfced1a"><link rel="shortcut icon" href="https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/img/icon.png"><link rel="canonical" href="https://ayinzhang.github.io/2025/09/11/2025-9-11-Simply%20Exploration%20of%20Unity%20Local%20Text-to-Speech%20Conversation%20+%20Large%20Language%20Model/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f74029fa7cc77ea7995800ef7950497d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"EN","msgToSimplifiedChinese":"ZH"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Unity 本地文字语音互转+大语言模型对话初探',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-11 17:57:48'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/me.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/en/"><i class="fa-fw fas fa-e"></i><span> 语言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pica.zhimg.com/v2-62008dfdb6d912ea5487b4b6a0b71248_1440w.png?source=ccfced1a')"><nav id="nav"><span id="blog-info"><a href="/" title="Ayin"><span class="site-name">Ayin</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/en/"><i class="fa-fw fas fa-e"></i><span> 语言</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Unity 本地文字语音互转+大语言模型对话初探</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-10T16:00:00.000Z" title="发表于 2025-09-11 00:00:00">2025-09-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-11T09:57:48.745Z" title="更新于 2025-09-11 17:57:48">2025-09-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/Unity%E7%9B%B8%E5%85%B3/">Unity相关</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Unity 本地文字语音互转+大语言模型对话初探"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;寄，方向被上面砍了，这周离职。大概问题还是权责不对等吧，在中台这要推进进展时成员总被项目任务占据，久之我也直接开摆研究些自己感兴趣且对项目可能有用的东西。总体来说还是收获挺多的：在邻座一位AI从训练到部署全栈的同事那接触到了ComfyUI的AIGC工作流，之后半年打算研究这个开硕士论文题目(不过他被裁的比我还早有点难绷)；且之后对那种抛组长&#x2F;制作人橄榄枝的也会多加谨慎(虽然这次也有我想借着实习试错机会体验各岗的原因)。</p>
+<p>&emsp;&emsp;这个Demo的来由其实是受whisper from the star影响在探索智能NPC，个人认为现有游戏完全靠AI驱动还是不大现实，但在现有框架下给予AI一些发挥空间还是可以的。拿冒险RPG来说，新手引导中村长委托玩家清理村庄内的史莱姆，你可以选择对话村长：“老登，我初来乍到装备不齐，爆点金币先”。根据你话语的诚恳和急切程度村长可能会给你一些药草以及「全村最好的剑」替换掉你手头的「初学者木剑」，之后每次接取&#x2F;完成委托时也可以再敲诈下。但当你到达邻村时，邻村村长可能会直接开喷：“我听过你，卑劣的投机者……”(设定中两个村子经常互通有无，且邻村村长更年轻直率)。个人不大喜欢whisper from the star中的AI使用，感觉还是情景扮演的聊天GPT，到特点节点直接强制线性收束。可能更倾向在预设好人物性格，关系后，让AI根据玩家的互动增减友善度从而有不同对话并给玩家的行为以帮助&#x2F;阻碍(给道具，参与助战&#x2F;暗中说坏话使绊子，与玩家决斗)。说起来这套和自己创造故事的流程也挺像的，搭建好舞台，放上出场人物，故事就自然而然的发生了。可能“一个人的性格就是他的命运”，崩三还在追我。</p>
+<p>&emsp;&emsp;仅停留于目前的对话界面是因为本地方案的延迟不大能接受(为了效果大语言模型至少4B，这样堪堪能做到实时流式文字输出。但要转语音的话要等文字生成完毕，且生成语音的耗时和生成完整文字回答相当，这样即使每生成一句完整的话后就转语音播放，从玩家输入到得到语音反馈也需要六七秒。一种解决方案是直接舍弃语音或学空洞骑士识别下对话情绪后用虫语回答，但个人可能更想探索<a target="_blank" rel="noopener" href="https://github.com/zhangliwei7758/unity-AI-Chat-Toolkit">调用在线API的方案</a>，但这需要很多时间精力)。且目前秋招和论文占据了绝大部分精力(秋招程策美三开，论文选自己不熟悉的领域，总感觉自己的神人程度又更上一层了)，只能说来日方长下次一定。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&emsp;&emsp;项目目前整合了本地语音文字互转及大语言模型对话。语音转文字由<a target="_blank" rel="noopener" href="https://github.com/Macoron/whisper.unity">whisper.unity</a>实现，大语言模型对话由<a target="_blank" rel="noopener" href="https://github.com/undreamai/LLMUnity">LLM for Unity</a>实现，文字转语音由<a target="_blank" rel="noopener" href="https://github.com/RVC-Boss/GPT-SoVITS">GPT-SoVITS</a>实现。其中只有文字转语音是要在Unity外开启本地端口映射调用，现在确实有些文字转语音的Unity插件，但测过后感觉都太机械了还不如跑团电子音。于是最终选择了这个声音克隆方案，通过十秒以内的音频克隆。</p>
+<p>&emsp;&emsp;接下来的ToDoList其实还有很多：搭建好一个村庄场景，给村长，村民，卫兵等NPC以相应的提示词和参考音频交互；在本地方法外，整个语音文字互转及大语言模型对话的API调用方案；设置大语言模型的对话返回格式，将触发事件传给游戏逻辑，当前情绪传给文字转语音模块……</p>
+<p><img src="https://pica.zhimg.com/80/v2-06af755611bd1fe162741d28821202c5_1440w.png?source=ccfced1a" alt="img"></p>
+<h2 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h2><p>&emsp;&emsp;项目将这三个功能分为三个Manager控制：STTManager，LLMManager，TTSManager。其中STTManager调用的模型位置在(Assets&#x2F;StreamingAssets&#x2F;Whisper)中，初始只有Tiny模型可用，识别能力一般，需要更大模型可<a target="_blank" rel="noopener" href="https://huggingface.co/ggerganov/whisper.cpp">自行下载</a>，放入指定位置并正确命名(ggml-<type>.bin)。LLMManager所使用的模型可在Inspector中下载，亦或下载其他模型导入，提示词也可自行更改。TTSManager相对复杂一些，需要复制go_webui.bat并把调用的webui.py zh_CN改为文件中的api.py，之后启用服务即可，音频地址为在GPT-SoVITS文件夹中的的相对路径。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>&emsp;&emsp;这套做下来最大感受是AI智能NPC的水比想象中的还要深很多，也难怪目前AI应用基本局限于角色扮演对话。其一是搭建好整套玩家与NPC，NPC与NPC交互的逻辑(斯坦福AI小镇那样精确模拟太耗了，可能骰个人物早中晚的日程，再对同一时空的人物进行情报交换即可)，其二是防止玩家跳出破坏游戏(比如经典的猫娘注入，和NPC讲他们只是游戏中的NPC……)。受限于能力与精力，暂且止步于此吧，希望之后有空能回来完善下。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ayinzhang.github.io">翼轸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ayinzhang.github.io/2025/09/11/2025-9-11-Simply%20Exploration%20of%20Unity%20Local%20Text-to-Speech%20Conversation%20+%20Large%20Language%20Model/">https://ayinzhang.github.io/2025/09/11/2025-9-11-Simply%20Exploration%20of%20Unity%20Local%20Text-to-Speech%20Conversation%20+%20Large%20Language%20Model/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ayinzhang.github.io" target="_blank">Ayin</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BC%95%E6%93%8E%E5%B7%A5%E5%85%B7/">引擎工具</a></div><div class="post_share"><div class="social-share" data-image="https://pica.zhimg.com/v2-62008dfdb6d912ea5487b4b6a0b71248_1440w.png?source=ccfced1a" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/08/16/2025-8-16-Simply%20Exploration%20of%20Unity%20YooAsset%20+%20HybridCLR%20Hot%20Update/" title="Unity YooAsset + HybridCLR热更初探"><img class="cover" src="https://pic1.zhimg.com/v2-09bfa8f60abc5361104c7584f6df43cd_720w.jpeg?source=d16d100b" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Unity YooAsset + HybridCLR热更初探</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/19/2023-12-19-Summary%20of%20Unity%20Engine%20Tool%20Internship/" title="Unity引擎工具实习总结"><img class="cover" src="https://picx.zhimg.com/70/v2-cb56904f62d22673473a9344025ec21a_1440w.avis?source=172ae18b&biz_tag=Post" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-19</div><div class="title">Unity引擎工具实习总结</div></div></a></div><div><a href="/2024/12/22/2024-12-22-XNode%20Simple%20Visual%20Dialogue%20Editor/" title="XNode简介及可视化对话系统"><img class="cover" src="https://picx.zhimg.com/70/v2-b44e6f5c815f8fcfcc426f0b114edbbd_1440w.avis?source=172ae18b&biz_tag=Post" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-22</div><div class="title">XNode简介及可视化对话系统</div></div></a></div><div><a href="/2024/09/08/2024-9-8-Unity%20Meta%20Game%20Doxing%20Pre-research/" title="C# Meta游戏开盒预研"><img class="cover" src="https://pic1.zhimg.com/70/v2-79195a1f0b4d19e6bd553cdb1aeb5c6f_1440w.avis?source=172ae18b&biz_tag=Post" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-08</div><div class="title">C# Meta游戏开盒预研</div></div></a></div><div><a href="/2025/08/16/2025-8-16-Simply%20Exploration%20of%20Unity%20YooAsset%20+%20HybridCLR%20Hot%20Update/" title="Unity YooAsset + HybridCLR热更初探"><img class="cover" src="https://pic1.zhimg.com/v2-09bfa8f60abc5361104c7584f6df43cd_720w.jpeg?source=d16d100b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-16</div><div class="title">Unity YooAsset + HybridCLR热更初探</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/me.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">翼轸</div><div class="author-info__description">終末一般論</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayinzhang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayinzhang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1242857339@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">不过是些许风霜罢了</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%93%8D"><span class="toc-number">3.</span> <span class="toc-text">实操</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/11/2025-9-11-Simply%20Exploration%20of%20Unity%20Local%20Text-to-Speech%20Conversation%20+%20Large%20Language%20Model/" title="Unity 本地文字语音互转+大语言模型对话初探"><img src="https://pica.zhimg.com/v2-62008dfdb6d912ea5487b4b6a0b71248_1440w.png?source=ccfced1a" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity 本地文字语音互转+大语言模型对话初探"/></a><div class="content"><a class="title" href="/2025/09/11/2025-9-11-Simply%20Exploration%20of%20Unity%20Local%20Text-to-Speech%20Conversation%20+%20Large%20Language%20Model/" title="Unity 本地文字语音互转+大语言模型对话初探">Unity 本地文字语音互转+大语言模型对话初探</a><time datetime="2025-09-10T16:00:00.000Z" title="发表于 2025-09-11 00:00:00">2025-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/16/2025-8-16-Simply%20Exploration%20of%20Unity%20YooAsset%20+%20HybridCLR%20Hot%20Update/" title="Unity YooAsset + HybridCLR热更初探"><img src="https://pic1.zhimg.com/v2-09bfa8f60abc5361104c7584f6df43cd_720w.jpeg?source=d16d100b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity YooAsset + HybridCLR热更初探"/></a><div class="content"><a class="title" href="/2025/08/16/2025-8-16-Simply%20Exploration%20of%20Unity%20YooAsset%20+%20HybridCLR%20Hot%20Update/" title="Unity YooAsset + HybridCLR热更初探">Unity YooAsset + HybridCLR热更初探</a><time datetime="2025-08-15T16:00:00.000Z" title="发表于 2025-08-16 00:00:00">2025-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/16/2025-5-16-Rigidbody%20Simulation%20and%20Fracture/" title="刚体模拟与破碎"><img src="https://pic1.zhimg.com/v2-b6a67053dcd8bd0651dcfe15936599e2_720w.png?source=d16d100b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="刚体模拟与破碎"/></a><div class="content"><a class="title" href="/2025/05/16/2025-5-16-Rigidbody%20Simulation%20and%20Fracture/" title="刚体模拟与破碎">刚体模拟与破碎</a><time datetime="2025-05-15T16:00:00.000Z" title="发表于 2025-05-16 00:00:00">2025-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/10/2025-5-10-ICEY/" title="艾希"><img src="https://pic1.zhimg.com/80/v2-61c4e8dc421ca9ea137777d60867148c_720w.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="艾希"/></a><div class="content"><a class="title" href="/2025/05/10/2025-5-10-ICEY/" title="艾希">艾希</a><time datetime="2025-05-09T16:00:00.000Z" title="发表于 2025-05-10 00:00:00">2025-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/06/2025-3-6-Honkai%20Star%20Rail%20Bartending/" title="星穹铁道「杯中逸事」复刻"><img src="https://pica.zhimg.com/70/v2-ab5b1cb243e07c5bbd1fdaddbed0a19e_1440w.avis?source=172ae18b&amp;biz_tag=Post" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="星穹铁道「杯中逸事」复刻"/></a><div class="content"><a class="title" href="/2025/03/06/2025-3-6-Honkai%20Star%20Rail%20Bartending/" title="星穹铁道「杯中逸事」复刻">星穹铁道「杯中逸事」复刻</a><time datetime="2025-03-05T16:00:00.000Z" title="发表于 2025-03-06 00:00:00">2025-03-06</time></div></div></div></div></div></div></main><footer id="footer" style="background: rgba(1,1,1,0)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 翼轸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="中英转换">ZH</button><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'ayinzhang/ayinzhang.github.io',
+      'data-repo-id': 'R_kgDOKl3Dog',
+      'data-category-id': 'DIC_kwDOKl3Dos4CaqXe',
+      'data-mapping': 'pathname',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },null)
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment= loadGiscus
+  }
+})()</script></div><script data-pjax src="/self/btf.js"></script><script data-pjax src="/self/tw_en.js"></script><div class="aplayer no-destroy" data-id="8985244058" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false"> </div><script id="canvas_nest" defer="defer" color="0,0,0" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="且行且看,尽力而为,不要害怕,不要后悔" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/elica.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":20,"vOffset":-130},"mobile":{"show":false,"scale":0.3},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body></html>
