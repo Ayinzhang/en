@@ -18,7 +18,8 @@ a#site-name {
 
 #aside-content > .card-widget:first-child,
 #aside-content .card-widget,
-.layout > div:first-child:not(.recent-posts),
+#post,
+#page,
 #recent-posts > .recent-post-item {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
@@ -28,9 +29,10 @@ a#site-name {
 /* ===== 暗色模式适配 ===== */
 [data-theme="dark"] #aside-content > .card-widget:first-child,
 [data-theme="dark"] #aside-content .card-widget,
-[data-theme="dark"] .layout > div:first-child:not(.recent-posts),
+[data-theme="dark"] #post,
+[data-theme="dark"] #page,
 [data-theme="dark"] #recent-posts > .recent-post-item {
-    background: rgba(20, 20, 30, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(15, 18, 28, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
