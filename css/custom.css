@@ -1,4 +1,4 @@
-/* ===== Custom font ===== */
+/* ===== 自定义字体 ===== */
 @font-face {
     font-family: 'myfont';
     src: url('https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/fonts/myfont.ttf');
@@ -11,7 +11,7 @@ a#site-name {
     font-family: myfont !important;
 }
 
-/* ===== Frosted glass cards (light mode default) ===== */
+/* ===== 毛玻璃卡片（亮色模式默认） ===== */
 #aside-content {
     background: rgba(255, 255, 255, 0);
 }
@@ -20,19 +20,28 @@ a#site-name {
 #aside-content .card-widget,
 #post,
 #page,
-#recent-posts > .recent-post-item {
+#recent-posts .recent-post-item {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
-/* ===== Dark mode adaptation ===== */
+/* ===== 暗色模式适配 ===== */
 [data-theme="dark"] #aside-content > .card-widget:first-child,
 [data-theme="dark"] #aside-content .card-widget,
 [data-theme="dark"] #post,
 [data-theme="dark"] #page,
-[data-theme="dark"] #recent-posts > .recent-post-item {
+[data-theme="dark"] #recent-posts .recent-post-item {
     background: rgba(15, 18, 28, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+}
+
+/* ===== 页脚透明（5.5.4 删了 footer_bg 配置） ===== */
+#footer {
+    background-color: transparent !important;
+}
+
+[data-theme="dark"] #footer {
+    background-color: transparent !important;
 }
