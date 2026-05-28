@@ -1,43 +1,36 @@
-/*�Զ�������*/
+/* ===== 自定义字体 ===== */
 @font-face {
     font-family: 'myfont';
     src: url('https://fastly.jsdelivr.net/gh/ayinzhang/ayinzhang.github.io/fonts/myfont.ttf');
-    font-display: swap
+    font-display: swap;
 }
 
-h1#site-title {
-    font-family: myfont !important
-}
-
-span#subtitle {
-    font-family: myfont !important
-}
-
+h1#site-title,
+span#subtitle,
 a#site-name {
-    font-family: myfont !important
+    font-family: myfont !important;
 }
 
-/*����ҳ��ë������Ч*/
+/* ===== 毛玻璃卡片（亮色模式默认） ===== */
 #aside-content {
-    background: rgba(255,255,255,0);
+    background: rgba(255, 255, 255, 0);
 }
 
-    #aside-content > .card-widget:first-child {
-        background: rgba(255,255,255,0.5);
-        backdrop-filter: blur(10px);
-    }
-
-    #aside-content .card-widget {
-        background: rgba(255,255,255,0.5);
-        backdrop-filter: blur(10px);
-    }
-
-.layout > div:first-child:not(.recent-posts) {
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(10px);
-}
-
+#aside-content > .card-widget:first-child,
+#aside-content .card-widget,
+.layout > div:first-child:not(.recent-posts),
 #recent-posts > .recent-post-item {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* ===== 暗色模式适配 ===== */
+[data-theme="dark"] #aside-content > .card-widget:first-child,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] .layout > div:first-child:not(.recent-posts),
+[data-theme="dark"] #recent-posts > .recent-post-item {
+    background: rgba(20, 20, 30, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
