@@ -24,9 +24,9 @@ a#site-name {
 #category,
 #tag,
 #recent-posts .recent-post-item {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
 }
 
 /* ===== 暗色模式适配 ===== */
@@ -38,9 +38,9 @@ a#site-name {
 [data-theme="dark"] #category,
 [data-theme="dark"] #tag,
 [data-theme="dark"] #recent-posts .recent-post-item {
-    background: rgba(15, 18, 28, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(15, 18, 28, 0.5) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
 }
 
 /* ===== 页脚透明（5.5.4 删了 footer_bg 配置） ===== */
