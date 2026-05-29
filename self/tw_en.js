@@ -1,55 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const { defaultEncoding, translateDelay, msgToSimplifiedChinese } =
-        GLOBAL_CONFIG.translate;
     const msgToEnglish = "EN";
-    const snackbarData = GLOBAL_CONFIG.Snackbar;
-    let currentEncoding = defaultEncoding;
-    const targetEncodingCookie = "translate-en-chn";
-    let targetEncoding =
-        saveToLocal.get(targetEncodingCookie) === undefined
-            ? defaultEncoding
-            : Number(saveToLocal.get("translate-en-chn"));
-    let translateButtonObject;
-    const isSnackbar = snackbarData !== undefined;
+    const msgToChinese = "ZH";
 
-    const isIncludeEN = (item) => {
-        const key = "/en/";
-        return item.includes(key);
+    const isOnEnglishSite = () => window.location.href.includes("/en/");
+
+    const setTranslateButtonText = () => {
+        const btn = document.getElementById("translateLink");
+        if (btn) btn.textContent = isOnEnglishSite() ? msgToChinese : msgToEnglish;
     };
 
-    const nowIncludeEN = isIncludeEN(window.location.href);
-    console.log(nowIncludeEN);
-
-    function translatePage() {
-        let currentUrl = window.location.href;
-        if (nowIncludeEN) {
-            // Ӣ�� => ���ļ���
-            translateButtonObject.textContent = msgToSimplifiedChinese;
-            // ��ַ�� /en/... => /...
-            let newUrl = currentUrl.replace("/en/", "/");
-            console.log(`Redirect to ${newUrl}`);
-            window.location.href = newUrl;
+    const switchLang = () => {
+        const currentUrl = window.location.href;
+        if (isOnEnglishSite()) {
+            // /en/... => /...
+            window.location.href = currentUrl.replace("/en/", "/");
         } else {
-            // ���ļ��� => Ӣ��
-            translateButtonObject.textContent = msgToEnglish;
-            // ��ַ /... => /en/...
-            let newUrl = currentUrl.replace(/^(https?:\/\/[^\/]+)(\/)?/, "$1/en/");
-            console.log(`Redirect to ${newUrl}`);
-            window.location.href = newUrl;
+            // /... => /en/...
+            window.location.href = currentUrl.replace(/^(https?:\/\/[^\/]+)(\/)?/, "$1/en/");
         }
-    }
+    };
 
-    function translateInitialization() {
-        translateButtonObject = document.getElementById("translateLink");
-        if (translateButtonObject) {
-            if (nowIncludeEN) {
-                translateButtonObject.textContent = msgToSimplifiedChinese;
-            } else {
-                translateButtonObject.textContent = msgToEnglish;
-            }
-            translateButtonObject.addEventListener('click', translatePage, false)
-        }
-    }
-    document.addEventListener("pjax:complete", translateInitialization);
-    translateInitialization();
+    // Butterfly v5.x delegates #translateLink clicks via #rightside to
+    // window.translateFn.translatePage(). Override that function so the
+    // delegated handler triggers our cross-site redirect instead of tw_cn's
+    // simplified/traditional conversion.
+    const overrideAndLabel = () => {
+        window.translateFn = window.translateFn || {};
+        window.translateFn.translatePage = switchLang;
+        setTranslateButtonText();
+    };
+
+    overrideAndLabel();
+    document.addEventListener("pjax:complete", overrideAndLabel);
 });
